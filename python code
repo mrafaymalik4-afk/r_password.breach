@@ -1,0 +1,30 @@
+#common password breach system.py
+common_passwords={
+    "2222": True,
+    "123456789":True,
+    "iamgay": True,
+    "letmein123":True
+    }
+#input password from user
+password=input("enter your password:")
+#intialize strenght score
+score=0
+#check password lenght
+if len(password)>=8:
+    score+=1
+    #check for digits
+    if any(char.digits()for char in password):
+        score+=1
+        #check for uppercase letters
+        if any(char.isupper()for char in password):
+            score+=1
+            #check for special characters
+            if any(char in "!@#$%^&*()_+-=[]" for char in password):
+                 score+=1
+                 #check if the password in common in breach list
+                 if password.lower() in common_passwords:
+                        print("warning: this password is found in common password lists or know for breaches.")
+                 else:
+                         print("this password is not found in common breach lists.")
+                         
+
