@@ -1,4 +1,4 @@
-# Simple Password Breach System 🛡️
+
 
 A lightweight Python script that evaluates **password strength** and checks inputs against a dictionary of **commonly breached passwords**.
 
