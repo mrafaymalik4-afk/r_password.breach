@@ -1,30 +1,44 @@
-#common password breach system.py
-common_passwords={
+
+                # common password breach system.py
+import string  # Added for cleaner character checking
+
+common_passwords = {
     "2222": True,
-    "123456789":True,
+    "123456789": True,
     "iamgay": True,
-    "letmein123":True
-    }
-#input password from user
-password=input("enter your password:")
-#intialize strenght score
-score=0
-#check password lenght
-if len(password)>=8:
-    score+=1
-    #check for digits
-    if any(char.digits()for char in password):
-        score+=1
-        #check for uppercase letters
-        if any(char.isupper()for char in password):
-            score+=1
-            #check for special characters
-            if any(char in "!@#$%^&*()_+-=[]" for char in password):
-                 score+=1
-                 #check if the password in common in breach list
-                 if password.lower() in common_passwords:
-                        print("warning: this password is found in common password lists or know for breaches.")
-                 else:
-                         print("this password is not found in common breach lists.")
+    "letmein123": True
+}
+
+# input password from user
+password = input("enter your password: ")
+
+# initialize strength score
+score = 0
+
+# 1. Check password length
+if len(password) >= 8:
+    score += 1
+
+# 2. Check for digits
+if any(char.isdigit() for char in password):
+    score += 1
+
+# 3. Check for uppercase letters
+if any(char.isupper() for char in password):
+    score += 1
+
+# 4. Check for special characters (Using string.punctuation)
+if any(char in string.punctuation for char in password):
+    score += 1
+
+# --- Output Results ---
+print(f"Password Strength Score: {score}/4")
+
+# 5. Check if the password is in the common breach list
+if password.lower() in common_passwords:
+    print("warning: this password is found in common password lists or known for breaches.")
+else:
+    print("this password is found.")
+
                          
 
